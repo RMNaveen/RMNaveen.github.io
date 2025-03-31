@@ -38,3 +38,13 @@ export interface PortfolioPost {
   type: 'project' | 'experience' | 'education' | 'skill' | 'research';
   likes?: number;
 }
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  role: string;
+  company: string;
+  avatar: string;
+  content: string;
+  relation: 'professor' | 'colleague' | 'client';
+}

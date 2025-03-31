@@ -1,4 +1,4 @@
-import type { SocialLink, StoryHighlight, PortfolioPost } from '../types/portfolio';
+import type { SocialLink, StoryHighlight, PortfolioPost, Testimonial } from '../types/portfolio';
 
 export const socialLinks: SocialLink[] = [
   {
@@ -155,5 +155,53 @@ export const portfolioPosts: PortfolioPost[] = [
     githubLink: "https://github.com/Intech-mobile-app/flutter-mobile-app/tree/master/fl_mobile_intech_frontend",
     type: "experience",
     likes: 35,
+  }
+];
+
+export const testimonials: Testimonial[] = [
+  {
+    id: "prof-smith",
+    name: "Dr. Sarah Smith",
+    role: "Professor",
+    company: "Northeastern University",
+    avatar: "https://i.pravatar.cc/150?u=prof-smith",
+    content: "Naveen demonstrated exceptional problem-solving abilities in our Advanced Machine Learning course. His innovative approach to the AlphaFold pipeline optimization project showcased both technical expertise and practical implementation skills.",
+    relation: "professor"
+  },
+  {
+    id: "john-doe",
+    name: "John Doe",
+    role: "Senior Software Engineer",
+    company: "Applied Data Finance",
+    avatar: "https://i.pravatar.cc/150?u=john-doe",
+    content: "Working with Naveen was a great experience. His attention to detail and ability to optimize complex database queries significantly improved our application's performance. He's a team player with strong technical skills.",
+    relation: "colleague"
+  },
+  {
+    id: "jane-smith",
+    name: "Jane Smith",
+    role: "Tech Lead",
+    company: "AI Research Lab",
+    avatar: "https://i.pravatar.cc/150?u=jane-smith",
+    content: "Naveen's contribution to our NewsNexus AI project was invaluable. His deep understanding of LLMs and graph databases, combined with his collaborative approach, helped us deliver an innovative solution.",
+    relation: "client"
+  },
+  {
+    id: "prof-johnson",
+    name: "Dr. Michael Johnson",
+    role: "Research Advisor",
+    company: "SimBioSys Lab",
+    avatar: "https://i.pravatar.cc/150?u=prof-johnson",
+    content: "Naveen's work on optimizing the AlphaFold pipeline demonstrated his ability to tackle complex computational challenges. His research contributions have been significant and show great promise in the field of bioinformatics.",
+    relation: "professor"
+  },
+  {
+    id: "emily-tech",
+    name: "Emily Chen",
+    role: "Project Manager",
+    company: "AFour Technologies",
+    avatar: "https://i.pravatar.cc/150?u=emily-tech",
+    content: "During his internship, Naveen showed exceptional initiative and technical capability. His work on our mobile payment integration project was delivered ahead of schedule and exceeded performance expectations.",
+    relation: "colleague"
   }
 ];

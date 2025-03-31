@@ -1,11 +1,13 @@
 import { ProfileHeader } from './components/profile-header';
 import { StoryHighlights } from './components/story-highlights';
 import { PortfolioGrid } from './components/portfolio-grid';
+import { Testimonials } from './components/testimonials';
 import { ContactForm } from './components/contact-form';
 import { Footer } from './components/footer';
 import { ThemeSwitcher } from './components/theme-switcher';
 import { LanguageSwitcher } from './components/language-switcher';
 import './i18n';
+import { Divider } from '@heroui/react';
 
 function App() {
   return (
@@ -16,6 +18,7 @@ function App() {
         <ProfileHeader />
         <StoryHighlights />
         <PortfolioGrid />
+        <Testimonials />
         <div id="contact" className="mt-12">
           <ContactForm />
         </div>

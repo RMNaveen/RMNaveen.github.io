@@ -52,32 +52,34 @@ export const StoryHighlights = () => {
 
   return (
     <>
-      <div className="flex gap-4 overflow-x-auto py-6 px-4 bg-content1 rounded-lg mt-6">
-        {stories.map((story, index) => (
-          <Button
-            isIconOnly
-            className="relative w-20 h-20 min-w-[5rem] group"
-            variant="light"
-            onPress={() => handleStoryClick(index)}
-            key={story.id}
-            aria-label={`Open story: ${story.title}`} // Add an accessible label
-          >
-            <div
-              className={`absolute inset-[2px] bg-content1 rounded-full flex items-center justify-center ${
-                story.seen
-                  ? 'bg-default-200'
-                  : 'absolute inset-0 bg-gradient-to-tr from-[#833ab4] via-[#c13584] to-[#f77737] rounded-full opacity-80 group-hover:opacity-100 transition-opacity'
-              }`}
-            />
-            <div className="absolute inset-1 rounded-full bg-background flex items-center justify-center">
-              <div className="flex flex-col items-center">
-                <Icon icon={story.icon} className="text-2xl mb-1" />
-                {/* Use translation for the title */}
-                <span className="text-tiny">{story.title}</span>
+      <div className="custom-scrollbar overflow-x-auto">
+        <div className="flex gap-4 overflow-x-auto py-6 px-4 bg-content1 rounded-lg mt-6">
+          {stories.map((story, index) => (
+            <Button
+              isIconOnly
+              className="relative w-20 h-20 min-w-[5rem] group"
+              variant="light"
+              onPress={() => handleStoryClick(index)}
+              key={story.id}
+              aria-label={`Open story: ${story.title}`} // Add an accessible label
+            >
+              <div
+                className={`absolute inset-[2px] bg-content1 rounded-full flex items-center justify-center ${
+                  story.seen
+                    ? 'bg-default-200'
+                    : 'absolute inset-0 bg-gradient-to-tr from-[#833ab4] via-[#c13584] to-[#f77737] rounded-full opacity-80 group-hover:opacity-100 transition-opacity'
+                }`}
+              />
+              <div className="absolute inset-1 rounded-full bg-background flex items-center justify-center">
+                <div className="flex flex-col items-center">
+                  <Icon icon={story.icon} className="text-2xl mb-1" />
+                  {/* Use translation for the title */}
+                  <span className="text-tiny">{story.title}</span>
+                </div>
               </div>
-            </div>
-          </Button>
-        ))}
+            </Button>
+          ))}
+        </div>
       </div>
 
       <StoryModal
