@@ -1,4 +1,3 @@
-import React from 'react';
 import { ProfileHeader } from './components/profile-header';
 import { StoryHighlights } from './components/story-highlights';
 import { PortfolioGrid } from './components/portfolio-grid';

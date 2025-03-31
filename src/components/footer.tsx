@@ -1,4 +1,3 @@
-import React from 'react';
 import { Icon } from '@iconify/react';
 import { Link } from '@heroui/react';
 import { socialLinks } from '../data/portfolio-data';
