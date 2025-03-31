@@ -7,7 +7,6 @@ import { Footer } from './components/footer';
 import { ThemeSwitcher } from './components/theme-switcher';
 import { LanguageSwitcher } from './components/language-switcher';
 import './i18n';
-import { Divider } from '@heroui/react';
 
 function App() {
   return (
