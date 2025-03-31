@@ -3,7 +3,15 @@ export default {
     title: "Naveen Rajagopal Mohanraj",
     role: "Asistente de Investigación | Máster en Ingeniería de Software",
     bio: "Ex-Ingeniero ADF & Solucionador de problemas | Miembro GDG Cloud | Entusiasta de la tecnología con un toque de humor 🎯",
-    contact: "Contáctame"
+    contact: "Contáctame",
+    stats: {
+      projectsCount: "10+",
+      projectsLabel: "Proyectos",
+      experienceCount: "2.5+ Años",
+      experienceLabel: "Experiencia",
+      publicationsCount: "3",
+      publicationsLabel: "Publicaciones"
+    }
   },
   social: {
     linkedin: "LinkedIn",
@@ -99,7 +107,7 @@ export default {
         description: "Atlee AI - Modelo de Lenguaje Personalizado",
         caption: "🚀 ¡Potenciador de Asistente de IA! 🤖\n\n✨ Procesamiento de documentos mejorado con LangChain, bases de datos vectoriales, RAG y Claude.\n📈 Eficiencia en el procesamiento de datos = 💯\nAdemás: Datos web éticos y una herramienta de preguntas y respuestas elegante. 🌐",
         tags: ["#RAG", "#AI", "#Streamlit", "#LangChain", "#BaseDeDatosVectorial"],
-        githubLink: "https://github.com/atleeAi",
+        githubLink: "https://github.com/Atlee-AI",
         type: "project"
       },
       cvdCure: {
@@ -109,7 +117,7 @@ export default {
         description: "CVD Cure - Aplicación de Detección y Prevención de COVID-19",
         caption: "📱 Aplicación COVID-19: ¡Empoderando a los usuarios! 🦠\n📈 Estadísticas en tiempo real y visualización de datos, más de 150 descargas.\n🔬 Detección de rayos X sin conexión (80% de precisión) con MobileNetV2.\n¡Tecnología para la salud pública! 💙",
         tags: ["#Flutter", "#COVID19", "#TecnologíaDeSalud", "#AppMóvil"],
-        githubLink: "https://github.com/Naveen-R-M/cvdCure",
+        githubLink: "https://github.com/Naveen-R-M/CVD-Cure",
         type: "project"
       },
       yogasanRectifier: {
@@ -119,7 +127,7 @@ export default {
         description: "Yogasan Rectifier - Entrenador de Yoga impulsado por IA",
         caption: "🧠 ¡Entrenador de Yoga impulsado por IA! 📊\n⚡ PoseNet sin conexión con Flutter, TensorFlow, Keras.\n📵 25% menos distracción en redes sociales durante la práctica.\n¡La tecnología se encuentra con la tranquilidad! 🚀",
         tags: ["#AprendizajeAutomático", "#Flutter", "#Bienestar"],
-        githubLink: "https://github.com/Trojans2-0/yogasanRectifier",
+        githubLink: "https://github.com/Trojans2-0/Yogasan-Rectifier",
         type: "project"
       },
       llokalityApp: {

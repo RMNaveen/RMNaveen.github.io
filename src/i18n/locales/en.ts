@@ -3,7 +3,15 @@ export default {
     title: "Naveen Rajagopal Mohanraj",
     role: "Research Assistant | MS in Software Engineering",
     bio: "Ex-ADF Engineer & Problem Solver | GDG Cloud Member | Tech Enthusiast with a Dash of Humor 🎯",
-    contact: "Contact Me"
+    contact: "Contact Me",
+    stats: {
+      projectsCount: "10+",
+      projectsLabel: "Projects",
+      experienceCount: "2.5+ Years",
+      experienceLabel: "Experience",
+      publicationsCount: "3",
+      publicationsLabel: "Publications"
+    }
   },
   social: {
     linkedin: "LinkedIn",
@@ -86,7 +94,7 @@ export default {
         description: "Atlee AI - Personalized Language Model",
         caption: "🚀 AI Assistant Power-Up! 🤖\n\n✨ Boosted document parsing & context with LangChain, Vector DBs, RAG, & Claude!\n📈 Data processing efficiency = 💯\nPlus: Ethical web data & a slick Q&A tool! 🌐",
         tags: ["#RAG", "#AI", "#Streamlit", "#LangChain", "#VectorDB"],
-        githubLink: "https://github.com/atleeAi",
+        githubLink: "https://github.com/Atlee-AI",
         type: "project"
       },
       cvdCure: {
@@ -96,7 +104,7 @@ export default {
         description: "CVD Cure - COVID-19 Detection and Prevention App",
         caption: "📱 COVID-19 App: Empowering Users! 🦠\n📈 Real-time stats & data viz, 150+ downloads!\n🔬 Offline X-ray detection (80% accuracy) with MobileNetV2!\nTech for public health! 💙",
         tags: ["#Flutter", "#COVID19", "#HealthTech", "#MobileApp"],
-        githubLink: "https://github.com/Naveen-R-M/cvdCure",
+        githubLink: "https://github.com/Naveen-R-M/CVD-Cure",
         type: "project"
       },
       yogasanRectifier: {
@@ -106,7 +114,7 @@ export default {
         description: "Yogasan Rectifier - AI-Powered Yoga Trainer",
         caption: "🧠 AI-Powered Yoga Trainer! 📊\n⚡ Offline PoseNet with Flutter, TensorFlow, Keras!\n📵 25% less social media distraction during practice!\nTech meets tranquility! 🚀",
         tags: ["#MachineLearning", "#Flutter", "#Wellness"],
-        githubLink: "https://github.com/Trojans2-0/yogasanRectifier",
+        githubLink: "https://github.com/Trojans2-0/Yogasan-Rectifier",
         type: "project"
       },
       llokalityApp: {

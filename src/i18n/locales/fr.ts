@@ -3,7 +3,15 @@ export default {
     title: "Naveen Rajagopal Mohanraj",
     role: "Assistant de recherche | Master en génie logiciel",
     bio: "Ex-ingénieur ADF & Résolveur de problèmes | Membre GDG Cloud | Passionné de technologie avec une touche d'humour 🎯",
-    contact: "Me Contacter"
+    contact: "Me Contacter",
+    stats: {
+      projectsCount: "10+",
+      projectsLabel: "Projets",
+      experienceCount: "2.5+ Ans",
+      experienceLabel: "Expérience",
+      publicationsCount: "3",
+      publicationsLabel: "Publications"
+    }
   },
   social: {
     linkedin: "LinkedIn",
@@ -99,7 +107,7 @@ export default {
         description: "Atlee AI - Modèle de Langage Personnalisé",
         caption: "🚀 Assistant IA Boosté ! 🤖\n\n✨ Traitement des documents amélioré avec LangChain, bases de données vectorielles, RAG et Claude.\n📈 Efficacité du traitement des données = 💯\nEn plus : Données web éthiques et un outil de questions-réponses élégant. 🌐",
         tags: ["#RAG", "#AI", "#Streamlit", "#LangChain", "#BaseDeDonnéesVectorielle"],
-        githubLink: "https://github.com/atleeAi",
+        githubLink: "https://github.com/Atlee-AI",
         type: "project"
       },
       cvdCure: {
@@ -109,7 +117,7 @@ export default {
         description: "CVD Cure - Application de Détection et Prévention du COVID-19",
         caption: "📱 Application COVID-19 : Autonomiser les utilisateurs ! 🦠\n📈 Statistiques en temps réel et visualisation des données, plus de 150 téléchargements.\n🔬 Détection de rayons X hors ligne (80% de précision) avec MobileNetV2.\nTechnologie pour la santé publique ! 💙",
         tags: ["#Flutter", "#COVID19", "#TechnologieDeSanté", "#AppMobile"],
-        githubLink: "https://github.com/Naveen-R-M/cvdCure",
+        githubLink: "https://github.com/Naveen-R-M/CVD-Cure",
         type: "project"
       },
       yogasanRectifier: {
@@ -119,7 +127,7 @@ export default {
         description: "Yogasan Rectifier - Entraîneur de Yoga alimenté par l'IA",
         caption: "🧠 Entraîneur de Yoga alimenté par l'IA ! 📊\n⚡ PoseNet hors ligne avec Flutter, TensorFlow, Keras.\n📵 25% de distraction en moins sur les réseaux sociaux pendant la pratique.\nLa technologie rencontre la tranquillité ! 🚀",
         tags: ["#ApprentissageAutomatique", "#Flutter", "#Bien-être"],
-        githubLink: "https://github.com/Trojans2-0/yogasanRectifier",
+        githubLink: "https://github.com/Trojans2-0/Yogasan-Rectifier",
         type: "project"
       },
       llokalityApp: {

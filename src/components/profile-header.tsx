@@ -102,21 +102,20 @@ export const ProfileHeader = () => {
           {t('header.bio')}
         </p>
 
-        <div className="mb-4 flex gap-8">
+        <div className="mb-4 flex gap-8 justify-center md:justify-start">
           <div className="flex flex-col items-center">
-            <span className="font-bold">10+</span>
-            <span className="text-default-500 text-sm">Projects</span>
+            <span className="font-bold">{t('header.stats.projectsCount')}</span>
+            <span className="text-default-500 text-sm">{t('header.stats.projectsLabel')}</span>
           </div>
           <div className="flex flex-col items-center">
-            <span className="font-bold">2.5+ Years</span>
-            <span className="text-default-500 text-sm">Experience</span>
+            <span className="font-bold">{t('header.stats.experienceCount')}</span>
+            <span className="text-default-500 text-sm">{t('header.stats.experienceLabel')}</span>
           </div>
           <div className="flex flex-col items-center">
-            <span className="font-bold">3</span>
-            <span className="text-default-500 text-sm">Publications</span>
+            <span className="font-bold">{t('header.stats.publicationsCount')}</span>
+            <span className="text-default-500 text-sm">{t('header.stats.publicationsLabel')}</span>
           </div>
         </div>
-
 
         <div className="flex flex-wrap gap-4 justify-center md:justify-start mb-4">
           {socialLinks.map((link) => (

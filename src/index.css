@@ -40,3 +40,67 @@
   scrollbar-width: thin; /* Thin scrollbar */
   scrollbar-color: linear-gradient(to right, #833ab4, #c13584, #f77737) rgba(0, 0, 0, 0.1); /* Thumb and track colors */
 }
+
+/* Custom scrollbar styles for card content */
+.card-body::-webkit-scrollbar {
+  width: 8px; /* Adjust the width for vertical scrollbars */
+}
+
+.card-body::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1); /* Subtle transparent background for the track */
+  border-radius: 10px; /* Rounded corners for the track */
+}
+
+.card-body::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 154, 0, 1) 10%,
+    rgba(208, 222, 33, 1) 20%,
+    rgba(79, 220, 74, 1) 30%,
+    rgba(63, 218, 216, 1) 40%,
+    rgba(47, 201, 226, 1) 50%,
+    rgba(28, 127, 238, 1) 60%,
+    rgba(95, 21, 242, 1) 70%,
+    rgba(186, 12, 248, 1) 80%,
+    rgba(251, 7, 217, 1) 90%,
+    rgba(255, 0, 0, 1) 100%
+  ); /* Gradient for the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the thumb */
+}
+
+.card-body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 1) 0%,
+    rgba(255, 154, 0, 1) 10%,
+    rgba(208, 222, 33, 1) 20%,
+    rgba(79, 220, 74, 1) 30%,
+    rgba(63, 218, 216, 1) 40%,
+    rgba(47, 201, 226, 1) 50%,
+    rgba(28, 127, 238, 1) 60%,
+    rgba(95, 21, 242, 1) 70%,
+    rgba(186, 12, 248, 1) 80%,
+    rgba(251, 7, 217, 1) 90%,
+    rgba(255, 0, 0, 1) 100%
+  ); /* Brighter gradient on hover */
+}
+
+.card-body {
+  scrollbar-width: thin; /* Thin scrollbar for Firefox */
+  scrollbar-color: linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 1) 0%,
+      rgba(255, 154, 0, 1) 10%,
+      rgba(208, 222, 33, 1) 20%,
+      rgba(79, 220, 74, 1) 30%,
+      rgba(63, 218, 216, 1) 40%,
+      rgba(47, 201, 226, 1) 50%,
+      rgba(28, 127, 238, 1) 60%,
+      rgba(95, 21, 242, 1) 70%,
+      rgba(186, 12, 248, 1) 80%,
+      rgba(251, 7, 217, 1) 90%,
+      rgba(255, 0, 0, 1) 100%
+    )
+    rgba(0, 0, 0, 0.1); /* Gradient thumb and light track for Firefox */
+}
