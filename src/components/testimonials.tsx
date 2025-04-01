@@ -77,18 +77,17 @@ export const Testimonials = () => {
                 className="gap-4 flex flex-col justify-between card-body overflow-y-auto"
                 style={{ height: maxHeight ? `${maxHeight}px` : 'auto' }} // Apply the max height dynamically
               >
-                <div className="flex items-start gap-3">
+                <div className="flex flex-col items-center gap-3">
                   <Avatar
                     src={testimonial.avatar}
                     className="w-12 h-12"
                     isBordered
                     color="primary"
                   />
-                  <div className="flex-1">
+                  <div className="text-center">
                     <h3 className="font-semibold">{testimonial.name}</h3>
                     <p className="text-small text-default-500">{testimonial.role}</p>
                   </div>
-                  <Icon icon={testimonial.icon} className="w-5 h-5 text-default-400" />
                 </div>
 
                 <div className="relative">
@@ -101,14 +100,16 @@ export const Testimonials = () => {
                   </p>
                 </div>
 
-                <div className="flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <Icon
-                      key={i}
-                      icon="lucide:star"
-                      className="w-4 h-4 text-warning"
-                    />
-                  ))}
+                <div className="flex flex-col items-start gap-3">
+                  <div className="flex gap-1 justify-center w-full text-center">
+                    {[...Array(5)].map((_, i) => (
+                      <Icon
+                        key={i}
+                        icon="gravity-ui:star-fill"
+                        className="w-4 h-4 text-warning"
+                      />
+                    ))}
+                  </div>
                 </div>
               </CardBody>
             </Card>
