@@ -10,7 +10,7 @@ export const socialLinks: SocialLink[] = [
   {
     id: "github",
     title: "GitHub",
-    icon: "logos:github-icon",
+    icon: "lucide:github",
     url: "https://github.com/Naveen-R-M"
   },
   {
@@ -22,7 +22,7 @@ export const socialLinks: SocialLink[] = [
   {
     id: "twitter",
     title: "X/Twitter",
-    icon: "logos:twitter",
+    icon: "lucide:x",
     url: "https://x.com/naveen_m19007"
   },
   {
