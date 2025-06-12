@@ -64,13 +64,13 @@ export const Testimonials = () => {
         ref={containerRef} // Attach the ref to the container
         className="flex justify-evenly items-center gap-6 overflow-x-auto py-6 px-4 bg-content1 rounded-lg mt-6 custom-scrollbar"
       >
-        {testimonials.map((testimonial, index) => (
+        {testimonials.slice(1).map((testimonial, index) => (
           <motion.div
             key={testimonial.id}
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="min-w-[300px] max-w-[300px] flex-shrink-0"
+            className="min-w-[300px] max-w-[400px] flex-shrink-0"
           >
             <Card className="h-full">
               <CardBody
