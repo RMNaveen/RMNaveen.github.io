@@ -64,7 +64,7 @@ export const VideoReel: React.FC<VideoReelProps> = ({ videoUrl, title, descripti
     onSwipedUp: () => {
       if (onClose) onClose();
     },
-    preventDefaultTouchmoveEvent: true,
+    preventScrollOnSwipe: true,
     trackMouse: true
   });
   
