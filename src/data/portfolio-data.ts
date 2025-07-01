@@ -94,6 +94,7 @@ export const portfolioPosts: PortfolioPost[] = [
     id: "techPresentation",
     title: "Have You Met Naveen?",
     video: "https://drive.google.com/file/d/1NCfNAvpC8qTOOf1_8BjF_FeAOqDb2M2A/view?usp=sharing",
+    thumbnail: "https://home.adelphi.edu/~br21822/Barney.jpg",
     description: "A friendly introduction showcasing my skills, personality and career journey",
     caption: "🎬 Meet Naveen: Software Engineer & AI Enthusiast! 🚀\n💻 Full-stack dev with ML/AI expertise \n💡 Problem solver with passion for innovative tech\nLet's connect and build something amazing together! 🤝",
     tags: ["#AIEngineer", "#FastLearner", "#VibeCoder", "#Innovator"],

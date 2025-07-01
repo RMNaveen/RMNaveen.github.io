@@ -80,6 +80,14 @@ export default {
   },
   portfolio: {
     posts: {
+      techPresentation: {
+        id: "techPresentation",
+        title: "Vous connaissez Naveen ?",
+        description: "Une introduction conviviale présentant mes compétences, ma personnalité et mon parcours professionnel",
+        caption: "🎬 Découvrez Naveen : Ingénieur logiciel & passionné d'IA ! 🚀\n💻 Développeur full-stack avec expertise ML/IA\n💡 Résolveur de problèmes passionné par l'innovation technologique\nConnectons-nous et créons quelque chose d'incroyable ensemble ! 🤝",
+        tags: ["#IngénieurIA", "#ApprenantRapide", "#VibeCoder", "#Innovateur"],
+        type: "experience"
+      },
       newsNexus: {
         id: "newsNexus",
         title: "NewsNexus AI",

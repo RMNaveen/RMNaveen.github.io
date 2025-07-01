@@ -25,6 +25,50 @@ export const PortfolioGrid = () => {
   const [activeComment, setActiveComment] = React.useState<string>('');
   const [showComments, setShowComments] = React.useState<Record<string, boolean>>({});
   const [loadedVideos, setLoadedVideos] = React.useState<Record<string, boolean>>({});
+  const [autoPlayTriggered, setAutoPlayTriggered] = React.useState<boolean>(false);
+  const [videoHighlight, setVideoHighlight] = React.useState<boolean>(false);
+  const [showHelper, setShowHelper] = React.useState<Record<string, boolean>>({});
+  
+  // Function to scroll to a post
+  const scrollToPost = (postId: string) => {
+    const postElement = document.getElementById(`post-${postId}`);
+    if (postElement) {
+      postElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+    }
+  };
+
+  // Auto-play the first video after a delay
+  React.useEffect(() => {
+    // Find the first video post
+    const videoPost = portfolioPosts.find(post => post.mediaType === 'video');
+    
+    if (videoPost && !autoPlayTriggered) {
+      // First highlight the video card to draw attention
+      const highlightTimer = setTimeout(() => {
+        setVideoHighlight(true);
+        scrollToPost(videoPost.id);
+      }, 1500); // 1.5 seconds delay for highlight
+      
+      // Then set a timeout to auto-play the video 
+      const playTimer = setTimeout(() => {
+        setLoadedVideos(prev => ({
+          ...prev,
+          [videoPost.id]: true
+        }));
+        setAutoPlayTriggered(true);
+        // Reset highlight after video starts
+        setTimeout(() => setVideoHighlight(false), 1000);
+      }, 3000); // 3 seconds total delay before play
+      
+      return () => {
+        clearTimeout(highlightTimer);
+        clearTimeout(playTimer);
+      };
+    }
+  }, [autoPlayTriggered]);
 
   // Video handling functions
   const handleVideoLoad = (postId: string) => {
@@ -32,6 +76,20 @@ export const PortfolioGrid = () => {
       ...prev,
       [postId]: true
     }));
+    
+    // Show helper text
+    setShowHelper(prev => ({
+      ...prev,
+      [postId]: true
+    }));
+    
+    // Hide helper text after 5 seconds
+    setTimeout(() => {
+      setShowHelper(prev => ({
+        ...prev,
+        [postId]: false
+      }));
+    }, 5000);
   };
 
   const handleVideoClick = (postId: string) => {
@@ -96,7 +154,7 @@ export const PortfolioGrid = () => {
     return count.toString();
   };
 
-  // Enhanced function to handle video embedding with fallback options
+  // Enhanced function to handle Google Drive embedding
   const getEmbedUrl = (driveUrl: string): string => {
     // Check if it's a Google Drive URL
     if (driveUrl && driveUrl.includes('drive.google.com')) {
@@ -105,9 +163,9 @@ export const PortfolioGrid = () => {
       
       // Format: https://drive.google.com/file/d/FILE_ID/view
       if (driveUrl.includes('/file/d/')) {
-        const match = driveUrl.match(/\/file\/d\/([^\/\?]+)/);
-        if (match && match[1]) {
-          fileId = match[1];
+        const segments = driveUrl.split('/file/d/');
+        if (segments.length > 1) {
+          fileId = segments[1].split('/')[0].split('?')[0];
         }
       }
       // Format: https://drive.google.com/open?id=FILE_ID
@@ -116,9 +174,6 @@ export const PortfolioGrid = () => {
         if (match && match[1]) {
           fileId = match[1];
         }
-      } else if (driveUrl.includes('?usp=sharing')) {
-        const parts = driveUrl.split('/');
-        fileId = parts[5]; // This might need adjustment based on URL structure
       }
       
       if (fileId) {
@@ -127,23 +182,7 @@ export const PortfolioGrid = () => {
       }
     }
     
-    // If YouTube URL, convert to embed format
-    if (driveUrl && driveUrl.includes('youtube.com')) {
-      const videoIdMatch = driveUrl.match(/(?:v=)([^&]+)/);
-      if (videoIdMatch && videoIdMatch[1]) {
-        return `https://www.youtube.com/embed/${videoIdMatch[1]}`;
-      }
-    }
-    
-    // For YouTube shortened URLs
-    if (driveUrl && driveUrl.includes('youtu.be')) {
-      const videoIdMatch = driveUrl.match(/youtu\.be\/([^?]+)/);
-      if (videoIdMatch && videoIdMatch[1]) {
-        return `https://www.youtube.com/embed/${videoIdMatch[1]}`;
-      }
-    }
-    
-    // If not a recognized video URL, return a fallback or the original
+    // If not a recognized video URL, return the original
     return driveUrl || '';
   };
 
@@ -153,9 +192,10 @@ export const PortfolioGrid = () => {
         {portfolioPosts.map((post) => (
           <Card
             key={post.id}
+            id={`post-${post.id}`}
             isPressable={false}
             isHoverable
-            className="flex flex-col"
+            className={`flex flex-col ${videoHighlight && post.mediaType === 'video' ? 'ring-4 ring-primary-500 ring-offset-4 ring-offset-background transform scale-105 shadow-xl transition-all duration-1000' : ''}`}
           >
             <CardBody
               className="p-0 flex-none cursor-pointer"
@@ -167,32 +207,110 @@ export const PortfolioGrid = () => {
                     {/* Video Display - either placeholder or iframe */}
                     {!loadedVideos[post.id] ? (
                       <div 
-                        className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-primary-900/40 to-black/60"
+                        className="w-full h-full flex flex-col items-center justify-center cursor-pointer overflow-hidden"
                         onClick={() => handleVideoClick(post.id)}
                       >
-                        <Icon 
-                          icon="lucide:play-circle" 
-                          className="text-6xl text-white opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
-                        />
-                        <span className="mt-2 text-white text-sm">
-                          {t(`portfolio.posts.${post.id}.title`, post.title)}
-                        </span>
+                        {/* Use custom thumbnail if available, otherwise use gradient background */}
+                        {post.thumbnail ? (
+                          <div className="relative w-full h-full">
+                            <img 
+                              src={post.thumbnail} 
+                              alt={t(`portfolio.posts.${post.id}.title`, post.title)} 
+                              className="w-full h-full object-cover brightness-75 hover:brightness-50 transition-all"
+                            />
+                            <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-primary-900/60 via-primary-800/40 to-black/70 hover:from-primary-800/50 hover:to-black/60 transition-all duration-300">
+                              {/* Barney Stinson-inspired text */}
+                              <div className="mb-3 text-center">
+                                <div className="text-3xl font-bold text-white tracking-wide drop-shadow-lg transform hover:scale-105 transition-all">
+                                  Have You Met
+                                </div>
+                                <div className="mt-1 text-4xl font-extrabold text-yellow-400 drop-shadow-lg tracking-widest transform hover:scale-110 transition-all duration-500">
+                                  NAVEEN?
+                                </div>
+                              </div>
+
+                              <div className="bg-yellow-600/90 rounded-full p-5 transform hover:scale-110 transition-transform duration-300 shadow-lg shadow-yellow-500/30 mt-2">
+                                <Icon 
+                                  icon="mdi:suit-tie" 
+                                  className="text-4xl text-white"
+                                />
+                              </div>
+                              
+                              {/* Legendary badge */}
+                              <div className="absolute top-4 left-4 bg-gradient-to-r from-yellow-500 to-yellow-600 text-black text-xs font-bold px-3 py-1.5 rounded-md shadow-md transform -rotate-12">
+                                <span>LEGENDARY</span>
+                              </div>
+                            </div>
+                          </div>
+                        ) : (
+                          <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-primary-900/40 to-black/60">
+                            <Icon 
+                              icon="lucide:play-circle" 
+                              className="text-6xl text-white opacity-80 hover:opacity-100 transition-opacity"
+                            />
+                            <span className="mt-2 text-white text-sm">
+                              {t(`portfolio.posts.${post.id}.title`, post.title)}
+                            </span>
+                          </div>
+                        )}
                       </div>
                     ) : (
-                      <iframe 
-                        src={getEmbedUrl(post.video || '')} 
-                        className="w-full h-full border-0" 
-                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                        allowFullScreen
-                        title={t(`portfolio.posts.${post.id}.title`, post.title)}
-                        onLoad={() => handleVideoLoad(post.id)}
-                      />
+                      <>
+                        {/* For Google Drive videos, create a two-step approach */}
+                        {post.video && post.video.includes('drive.google.com') ? (
+                          <div className="w-full h-full relative">
+                            <iframe 
+                              src={getEmbedUrl(post.video || '')} 
+                              className="w-full h-full border-0 opacity-100 animate-fadeIn" 
+                              allow="autoplay; fullscreen; clipboard-write; encrypted-media; picture-in-picture"
+                              allowFullScreen
+                              loading="eager"
+                              sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                              title={t(`portfolio.posts.${post.id}.title`, post.title)}
+                              onLoad={() => {
+                                handleVideoLoad(post.id);
+                                // Try to force focus on the iframe to help with autoplay
+                                setTimeout(() => {
+                                  const iframe = document.querySelector(`#post-${post.id} iframe`);
+                                  if (iframe) {
+                                    (iframe as HTMLElement).focus();
+                                    try {
+                                      // Simulate a click on the iframe
+                                      (iframe as HTMLElement).click();
+                                    } catch (e) {
+                                      console.log('Cannot simulate click: ', e);
+                                    }
+                                  }
+                                }, 1000);
+                              }}
+                            />
+                            {/* Overlay helper text to guide user - fades out after 5 seconds */}
+                            {showHelper[post.id] !== false && (
+                              <div className={`absolute bottom-4 left-0 right-0 flex justify-center transition-opacity duration-1000 ${showHelper[post.id] ? 'opacity-100' : 'opacity-0'}`}>
+                                <div className="bg-yellow-600/80 text-white text-xs font-medium px-4 py-2 rounded-md shadow-md animate-pulse">
+                                  <span className="tracking-wide">SUIT UP & CLICK TO PLAY</span>
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          /* For other videos, use standard iframe */
+                          <iframe 
+                            src={getEmbedUrl(post.video || '')} 
+                            className="w-full h-full border-0 opacity-0 animate-fadeIn" 
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                            allowFullScreen
+                            title={t(`portfolio.posts.${post.id}.title`, post.title)}
+                            onLoad={() => handleVideoLoad(post.id)}
+                          />
+                        )}
+                      </>
                     )}
                     
                     {/* Video Label */}
-                    <div className="absolute top-2 right-2 bg-primary-600 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
+                    <div className="absolute top-2 right-2 bg-yellow-600 text-black text-xs px-3 py-1.5 rounded-md flex items-center gap-1 font-bold shadow-md transform -rotate-3">
                       <Icon icon="lucide:video" className="text-sm" />
-                      <span>Reel</span>
+                      <span>AWESOME</span>
                     </div>
                   </div>
                 ) : (

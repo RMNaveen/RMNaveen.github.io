@@ -32,6 +32,7 @@ export interface PortfolioPost {
   title: string;
   image?: string;
   video?: string;
+  thumbnail?: string;
   description: string;
   caption: string;
   tags: string[];

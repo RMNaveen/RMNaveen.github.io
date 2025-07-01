@@ -80,12 +80,20 @@ export default {
   },
   portfolio: {
     posts: {
+      techPresentation: {
+        id: "techPresentation",
+        title: "¿Ya conoces a Naveen?",
+        description: "Una introducción amistosa que muestra mis habilidades, personalidad y trayectoria profesional",
+        caption: "🎬 Conoce a Naveen: ¡Ingeniero de Software y entusiasta de la IA! 🚀\n💻 Desarrollador full-stack con experiencia en ML/IA\n💡 Solucionador de problemas apasionado por la tecnología innovadora\n¡Conectemos y creemos algo increíble juntos! 🤝",
+        tags: ["#IngenieroIA", "#AprendizRápido", "#VibeCoder", "#Innovador"],
+        type: "experience"
+      },
       newsNexus: {
         id: "newsNexus",
         title: "NewsNexus AI",
         image: "https://img.freepik.com/free-psd/artificial-intelligence-concept-template_23-2151613944.jpg?t=st=1742776553~exp=1742780153~hmac=45a5efedd3e8419a5ac4371bed5a169b0aadfae9d4461bc6b47a5d08d263dc62&w=1800",
         description: "Un sistema de recuperación de noticias impulsado por IA utilizando bases de datos gráficas y LLMs",
-        caption: "📰 ¡Magia de GraphRAG! ✨\n🔍 Recuperación contextual de noticias impulsada por Neo4j, spaCy y Ollama.\n🤯 ¡Más de 50 mapeos de relaciones por consulta!\nResúmenes de noticias en tiempo real con LangChain. 🚀",
+        caption: "📰 ¡Magia de GraphRAG! ✨\n🔍 Recuperación contextual de noticias impulsida por Neo4j, spaCy y Ollama.\n🤯 ¡Más de 50 mapeos de relaciones por consulta!\nResúmenes de noticias en tiempo real con LangChain. 🚀",
         tags: ["#AI", "#LangChain", "#Neo4j", "#AppDeNoticias", "#GraphRAG"],
         githubLink: "https://github.com/Naveen-R-M/NewsNexus---News-AI",
         type: "project"
