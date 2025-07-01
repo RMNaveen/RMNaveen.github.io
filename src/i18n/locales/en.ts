@@ -67,6 +67,14 @@ export default {
   },
   portfolio: {
     posts: {
+      techPresentation: {
+        id: "techPresentation",
+        title: "Have You Met Naveen?",
+        description: "A friendly introduction showcasing my skills, personality and career journey",
+        caption: "🎬 Meet Naveen: Software Engineer & AI Enthusiast! 🚀\n💻 Full-stack dev with ML/AI expertise \n💡 Problem solver with passion for innovative tech\nLet's connect and build something amazing together! 🤝",
+        tags: ["#AIEngineer", "#FastLearner", "#VibeCoder", "#Innovator"],
+        type: "experience"
+      },
       newsNexus: {
         id: "newsNexus",
         title: "NewsNexus AI",

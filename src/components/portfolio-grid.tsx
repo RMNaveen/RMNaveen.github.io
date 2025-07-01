@@ -5,6 +5,7 @@ import { useTheme } from '@heroui/use-theme';
 import { HeroUIProvider } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { portfolioPosts } from '../data/portfolio-data';
+import type { PortfolioPost } from '../types/portfolio';
 
 export const PortfolioGrid = () => {
   const { t } = useTranslation();
@@ -15,7 +16,7 @@ export const PortfolioGrid = () => {
   const [likes, setLikes] = React.useState<Record<string, number>>(() => {
     return portfolioPosts.reduce((acc, post) => ({
       ...acc,
-      [post.id]: post.likes // Use likes from portfolioPosts
+      [post.id]: post.likes || 0 // Use likes from portfolioPosts
     }), {});
   });
 
@@ -23,6 +24,24 @@ export const PortfolioGrid = () => {
   const [comments, setComments] = React.useState<Record<string, string[]>>({});
   const [activeComment, setActiveComment] = React.useState<string>('');
   const [showComments, setShowComments] = React.useState<Record<string, boolean>>({});
+  const [loadedVideos, setLoadedVideos] = React.useState<Record<string, boolean>>({});
+
+  // Video handling functions
+  const handleVideoLoad = (postId: string) => {
+    setLoadedVideos(prev => ({
+      ...prev,
+      [postId]: true
+    }));
+  };
+
+  const handleVideoClick = (postId: string) => {
+    if (!loadedVideos[postId]) {
+      setLoadedVideos(prev => ({
+        ...prev,
+        [postId]: true
+      }));
+    }
+  };
 
   const handleLike = (id: string) => {
     setLikedPosts(prev => {
@@ -54,9 +73,16 @@ export const PortfolioGrid = () => {
     }));
   };
 
-  const handlePostClick = (githubLink?: string) => {
-    if (githubLink) {
-      window.open(githubLink, '_blank');
+  const handlePostClick = (post: PortfolioPost) => {
+    // If it's a video post, don't do anything as the video is already interactive
+    if (post.mediaType === 'video') {
+      handleVideoClick(post.id);
+      return;
+    }
+    
+    // Otherwise, if there's a GitHub link, open it
+    if (post.githubLink) {
+      window.open(post.githubLink, '_blank');
     }
   };
 
@@ -68,6 +94,57 @@ export const PortfolioGrid = () => {
       return `${(count / 1000).toFixed(1)}K`;
     }
     return count.toString();
+  };
+
+  // Enhanced function to handle video embedding with fallback options
+  const getEmbedUrl = (driveUrl: string): string => {
+    // Check if it's a Google Drive URL
+    if (driveUrl && driveUrl.includes('drive.google.com')) {
+      // Extract the file ID from the URL
+      let fileId = '';
+      
+      // Format: https://drive.google.com/file/d/FILE_ID/view
+      if (driveUrl.includes('/file/d/')) {
+        const match = driveUrl.match(/\/file\/d\/([^\/\?]+)/);
+        if (match && match[1]) {
+          fileId = match[1];
+        }
+      }
+      // Format: https://drive.google.com/open?id=FILE_ID
+      else if (driveUrl.includes('open?id=')) {
+        const match = driveUrl.match(/[?&]id=([^&]+)/);
+        if (match && match[1]) {
+          fileId = match[1];
+        }
+      } else if (driveUrl.includes('?usp=sharing')) {
+        const parts = driveUrl.split('/');
+        fileId = parts[5]; // This might need adjustment based on URL structure
+      }
+      
+      if (fileId) {
+        // Use the embed URL format for Google Drive
+        return `https://drive.google.com/file/d/${fileId}/preview`;
+      }
+    }
+    
+    // If YouTube URL, convert to embed format
+    if (driveUrl && driveUrl.includes('youtube.com')) {
+      const videoIdMatch = driveUrl.match(/(?:v=)([^&]+)/);
+      if (videoIdMatch && videoIdMatch[1]) {
+        return `https://www.youtube.com/embed/${videoIdMatch[1]}`;
+      }
+    }
+    
+    // For YouTube shortened URLs
+    if (driveUrl && driveUrl.includes('youtu.be')) {
+      const videoIdMatch = driveUrl.match(/youtu\.be\/([^?]+)/);
+      if (videoIdMatch && videoIdMatch[1]) {
+        return `https://www.youtube.com/embed/${videoIdMatch[1]}`;
+      }
+    }
+    
+    // If not a recognized video URL, return a fallback or the original
+    return driveUrl || '';
   };
 
   return (
@@ -82,33 +159,70 @@ export const PortfolioGrid = () => {
           >
             <CardBody
               className="p-0 flex-none cursor-pointer"
-              onClick={() => handlePostClick(post.githubLink)}
+              onClick={() => handlePostClick(post)}
             >
               <div className="relative group">
-                <Image
-                  src={post.image}
-                  alt={t(`portfolio.posts.${post.id}.title`, post.title)}
-                  className="w-full aspect-square object-cover"
-                  classNames={{
-                    img: "brightness-90 group-hover:brightness-50 transition-all"
-                  }}
-                />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="text-white text-center p-4">
-                    <h3 className="text-lg font-bold mb-2">
-                      {t(`portfolio.posts.${post.id}.title`, post.title)}
-                    </h3>
-                    <p className="text-sm">
-                      {t(`portfolio.posts.${post.id}.description`, post.description)}
-                    </p>
-                    {post.githubLink && (
-                      <Icon
-                        icon={isDark ? "lucide:github" : "logos:github-icon"}
-                        className="text-2xl mt-2"
+                {post.mediaType === 'video' ? (
+                  <div className="w-full aspect-square relative bg-black overflow-hidden">
+                    {/* Video Display - either placeholder or iframe */}
+                    {!loadedVideos[post.id] ? (
+                      <div 
+                        className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-primary-900/40 to-black/60"
+                        onClick={() => handleVideoClick(post.id)}
+                      >
+                        <Icon 
+                          icon="lucide:play-circle" 
+                          className="text-6xl text-white opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
+                        />
+                        <span className="mt-2 text-white text-sm">
+                          {t(`portfolio.posts.${post.id}.title`, post.title)}
+                        </span>
+                      </div>
+                    ) : (
+                      <iframe 
+                        src={getEmbedUrl(post.video || '')} 
+                        className="w-full h-full border-0" 
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        allowFullScreen
+                        title={t(`portfolio.posts.${post.id}.title`, post.title)}
+                        onLoad={() => handleVideoLoad(post.id)}
                       />
                     )}
+                    
+                    {/* Video Label */}
+                    <div className="absolute top-2 right-2 bg-primary-600 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
+                      <Icon icon="lucide:video" className="text-sm" />
+                      <span>Reel</span>
+                    </div>
                   </div>
-                </div>
+                ) : (
+                  <>
+                    <Image
+                      src={post.image}
+                      alt={t(`portfolio.posts.${post.id}.title`, post.title)}
+                      className="w-full aspect-square object-cover"
+                      classNames={{
+                        img: "brightness-90 group-hover:brightness-50 transition-all"
+                      }}
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="text-white text-center p-4">
+                        <h3 className="text-lg font-bold mb-2">
+                          {t(`portfolio.posts.${post.id}.title`, post.title)}
+                        </h3>
+                        <p className="text-sm">
+                          {t(`portfolio.posts.${post.id}.description`, post.description)}
+                        </p>
+                        {post.githubLink && (
+                          <Icon
+                            icon={isDark ? "lucide:github" : "logos:github-icon"}
+                            className="text-2xl mt-2"
+                          />
+                        )}
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
             </CardBody>
             <CardFooter className="flex-1 flex flex-col items-start gap-2 pt-4">

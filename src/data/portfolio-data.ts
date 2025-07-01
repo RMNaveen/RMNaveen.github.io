@@ -91,6 +91,17 @@ export const storyHighlights: StoryHighlight[] = [
 
 export const portfolioPosts: PortfolioPost[] = [
   {
+    id: "techPresentation",
+    title: "Have You Met Naveen?",
+    video: "https://drive.google.com/file/d/1NCfNAvpC8qTOOf1_8BjF_FeAOqDb2M2A/view?usp=sharing",
+    description: "A friendly introduction showcasing my skills, personality and career journey",
+    caption: "🎬 Meet Naveen: Software Engineer & AI Enthusiast! 🚀\n💻 Full-stack dev with ML/AI expertise \n💡 Problem solver with passion for innovative tech\nLet's connect and build something amazing together! 🤝",
+    tags: ["#AIEngineer", "#FastLearner", "#VibeCoder", "#Innovator"],
+    type: "experience",
+    likes: 78,
+    mediaType: "video"
+  },
+  {
     id: "newsNexus",
     title: "NewsNexus AI",
     image: "https://img.freepik.com/free-psd/artificial-intelligence-concept-template_23-2151613944.jpg?t=st=1742776553~exp=1742780153~hmac=45a5efedd3e8419a5ac4371bed5a169b0aadfae9d4461bc6b47a5d08d263dc62&w=1800",

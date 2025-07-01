@@ -30,13 +30,15 @@ export interface Story {
 export interface PortfolioPost {
   id: string;
   title: string;
-  image: string;
+  image?: string;
+  video?: string;
   description: string;
   caption: string;
   tags: string[];
   githubLink?: string;
   type: 'project' | 'experience' | 'education' | 'skill' | 'research';
   likes?: number;
+  mediaType?: 'image' | 'video';
 }
 
 export interface Testimonial {
