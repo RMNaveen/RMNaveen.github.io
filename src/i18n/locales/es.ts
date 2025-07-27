@@ -9,7 +9,7 @@ export default {
       projectsLabel: "Proyectos",
       experienceCount: "2.5+ Años",
       experienceLabel: "Experiencia",
-      publicationsCount: "3",
+      publicationsCount: "2",
       publicationsLabel: "Publicaciones"
     }
   },
@@ -18,7 +18,8 @@ export default {
     github: "GitHub",
     email: "Correo",
     twitter: "X/Twitter",
-    resume: "Currículum"
+    resume: "Currículum",
+    blog: "Blog"
   },
   stories: {
     skills: {
@@ -34,6 +35,7 @@ export default {
     projects: {
       title: "Proyectos",
       items: [
+        "LlamaVox - IA Ajustada | Jun 2025\n🦙 Ajuste Fino con Adaptación de Rango Bajo (LoRA)\n⚡ 98% de reducción de recursos, 75% mejor programación GPU\n🚀 Llama 3.1 8B optimizado para diálogo natural",
         "NewsNexus - News AI | Proyecto Personal\n🔗 Aplicación GraphRAG para recuperación contextual de noticias\n📰 Análisis de consultas mejorado con LangChain para resúmenes en tiempo real",
         "Cálculo Paralelo para Análisis del Mercado de Valores\n📈 Predicción de acciones acelerada mediante aprendizaje profundo distribuido\n📊 Rendimiento del clúster optimizado con escalado dinámico",
         "Atlee AI - Modelo de Lenguaje Personalizado\n🤖 Procesamiento de documentos mejorado con un asistente avanzado de IA\n🌐 Ética en la recopilación de datos y herramienta de preguntas y respuestas",
@@ -87,6 +89,15 @@ export default {
         caption: "🎬 Conoce a Naveen: ¡Ingeniero de Software y entusiasta de la IA! 🚀\n💻 Desarrollador full-stack con experiencia en ML/IA\n💡 Solucionador de problemas apasionado por la tecnología innovadora\n¡Conectemos y creemos algo increíble juntos! 🤝",
         tags: ["#IngenieroIA", "#AprendizRápido", "#VibeCoder", "#Innovador"],
         type: "experience"
+      },
+      llamaVox: {
+        id: "llamaVox",
+        title: "LlamaVox - IA Ajustada",
+        image: "https://plus.unsplash.com/premium_photo-1683121718643-fb18d2668d53?q=80&w=2532&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        description: "IA ajustada para diálogo natural y humano usando Ajuste Fino Eficiente en Parámetros",
+        caption: "🦙 LlamaVox: ¡Diálogo IA Natural! 🗣️\n⚡ ¡98% menos recursos de entrenamiento con ajuste fino LoRA!\n🎯 ¡75% mejor programación GPU en clústeres SLURM!\n🤖 Llama 3.1 8B + PEFT = ¡Campeón de eficiencia! 🚀",
+        tags: ["#LLM", "#AjusteFino", "#LoRA", "#PEFT", "#Llama", "#HPC"],
+        type: "project"
       },
       newsNexus: {
         id: "newsNexus",

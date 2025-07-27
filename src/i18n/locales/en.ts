@@ -9,7 +9,7 @@ export default {
       projectsLabel: "Projects",
       experienceCount: "2.5+ Years",
       experienceLabel: "Experience",
-      publicationsCount: "3",
+      publicationsCount: "2",
       publicationsLabel: "Publications"
     }
   },
@@ -18,7 +18,8 @@ export default {
     github: "GitHub",
     email: "Email",
     twitter: "X/Twitter",
-    resume: "Resume"
+    resume: "Resume",
+    blog: "Blog"
   },
   stories: {
     skills: {
@@ -34,6 +35,7 @@ export default {
     projects: {
       title: "Projects",
       items: [
+        "LlamaVox - Fine-tuned AI | Jun 2025\n🦙 Parameter-Efficient Fine-Tuning (PEFT) with LoRA\n⚡ 98% resource reduction, 75% better GPU scheduling\n🚀 Llama 3.1 8B optimized for natural dialogue",
         "NewsNexus - News AI | Personal Project\n🔗 Built GraphRAG app for contextual news retrieval\n📰 Improved query analysis with LangChain for real-time summaries",
         "Parallel Computation for Stock Market Analysis\n📈 Accelerated stock prediction via distributed deep learning\n📊 Optimized cluster performance with dynamic scaling",
         "Atlee AI - Personalized Language Model\n🤖 Improved document processing with an advanced AI assistant\n🌐 Enhanced data collection ethics and built a Q&A tool",
@@ -74,6 +76,15 @@ export default {
         caption: "🎬 Meet Naveen: Software Engineer & AI Enthusiast! 🚀\n💻 Full-stack dev with ML/AI expertise \n💡 Problem solver with passion for innovative tech\nLet's connect and build something amazing together! 🤝",
         tags: ["#AIEngineer", "#FastLearner", "#VibeCoder", "#Innovator"],
         type: "experience"
+      },
+      llamaVox: {
+        id: "llamaVox",
+        title: "LlamaVox - Fine-tuned AI",
+        image: "https://plus.unsplash.com/premium_photo-1683121718643-fb18d2668d53?q=80&w=2532&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        description: "Fine-tuned AI for natural, human-like dialogue using Parameter-Efficient Fine-Tuning",
+        caption: "🦙 LlamaVox: Natural AI Dialogue! 🗣️\n⚡ 98% less training resources with LoRA fine-tuning!\n🎯 75% better GPU scheduling on SLURM clusters!\n🤖 Llama 3.1 8B + PEFT = Efficiency Champion! 🚀",
+        tags: ["#LLM", "#FineTuning", "#LoRA", "#PEFT", "#Llama", "#HPC"],
+        type: "project"
       },
       newsNexus: {
         id: "newsNexus",

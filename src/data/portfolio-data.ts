@@ -30,6 +30,12 @@ export const socialLinks: SocialLink[] = [
     title: "Resume",
     icon: "lucide:file-text",
     url: "https://drive.google.com/file/d/1W37vu62lBOjWeeHW6kxzLiID8XviJC8O/view"
+  },
+  {
+    id: "blog",
+    title: "Blog",
+    icon: "lucide:book-open",
+    url: "https://naveen-r-m.github.io/Blogs/"
   }
 ];
 
@@ -51,6 +57,7 @@ export const storyHighlights: StoryHighlight[] = [
     title: "Projects",
     icon: "gravity-ui:rocket",
     items: [
+      "LlamaVox - Fine-tuned AI | Jun 2025\n🦙 Parameter-Efficient Fine-Tuning (PEFT) with LoRA\n⚡ 98% resource reduction, 75% better GPU scheduling\n🚀 Llama 3.1 8B optimized for natural dialogue",
       "NewsNexus - News AI | Personal Project\n🔗 Built GraphRAG app for contextual news retrieval\n📰 Improved query analysis with LangChain for real-time summaries",
       "Parallel Computation for Stock Market Analysis\n📈 Accelerated stock prediction via distributed deep learning\n📊 Optimized cluster performance with dynamic scaling",
       "Atlee AI - Personalized Language Model\n🤖 Improved document processing with an advanced AI assistant\n🌐 Enhanced data collection ethics and built a Q&A tool",
@@ -101,6 +108,17 @@ export const portfolioPosts: PortfolioPost[] = [
     type: "experience",
     likes: 78,
     mediaType: "video"
+  },
+  {
+    id: "llamaVox",
+    title: "LlamaVox - Fine-tuned AI",
+    image: "https://images.pexels.com/photos/18069697/pexels-photo-18069697.png",
+    description: "Fine-tuned AI for natural, human-like dialogue using Parameter-Efficient Fine-Tuning",
+    caption: "🦙 LlamaVox: Natural AI Dialogue! 🗣️\n⚡ 98% less training resources with LoRA fine-tuning!\n🎯 75% better GPU scheduling on SLURM clusters!\n🤖 Llama 3.1 8B + PEFT = Efficiency Champion! 🚀",
+    tags: ["#LLM", "#FineTuning", "#LoRA", "#PEFT", "#Llama", "#HPC"],
+    githubLink: "https://github.com/Naveen-R-M/LlamaVox",
+    type: "project",
+    likes: 89,
   },
   {
     id: "newsNexus",
